@@ -1,0 +1,11 @@
+#Don't track content of these folders 
+crimePaysenv/
+db.sqlite3
+
+*.com
+*.dll
+*.exe
+*.o
+*.so
+*.class
+
