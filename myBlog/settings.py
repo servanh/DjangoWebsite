@@ -30,7 +30,7 @@ ALLOWED_HOSTS = ["crimepaysbutbloggingdoesnt.com", "www.crimepaysbutbloggingdoes
 
 
 # Application definition
-
+# added blogsite here
 INSTALLED_APPS = [
     'blogsite',
     'django.contrib.admin',
