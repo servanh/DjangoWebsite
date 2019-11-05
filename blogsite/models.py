@@ -1,6 +1,7 @@
 from django.db import models
 from django.template.defaultfilters import  slugify
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 
 # Create your models here.
@@ -12,9 +13,9 @@ class Post(models.Model):
     author = models.TextField()
 
 
-@models.permalink
+
 def get_absolute_url(self):
-    return ('blog_post_detail', (),
+    return reverse('blog_post_detail', (),
             {
                 'slug': self.slug,
             })
