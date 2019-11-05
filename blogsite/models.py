@@ -1,5 +1,5 @@
 from django.db import models
-from django.template.defaultfilters import  slugify
+from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
 from django.urls import reverse
 
@@ -13,12 +13,13 @@ class Post(models.Model):
     author = models.TextField()
 
 
-
 def get_absolute_url(self):
     return reverse('blog_post_detail', (),
             {
                 'slug': self.slug,
             })
+
+
 def save(self, *args, **kwargs):
     if not self.slug:
         self.slug = slugify(self.title)
