@@ -4,7 +4,7 @@ from django.http import HttpResponse
 
 
 def index(request):
-    return HttpResponse('Hello, welcome to the home page.')
+    return render(request, 'index.html', context=request)
 
 
 def individual_post(request):
