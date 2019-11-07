@@ -5,7 +5,7 @@ from django.template import Context
 
 
 def index(request):
-    return render(request, 'home.html', context=Context)
+    return render(request, 'home.html')
 
 
 def individual_post(request):
