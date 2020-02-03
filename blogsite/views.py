@@ -12,3 +12,5 @@ def individual_post(request):
     return HttpResponse('Hi, I have no Idea what I am doing. Maybe a post will be here someday.')
 
 
+def posts(request):
+    return render(request, 'post.html')
