@@ -3,21 +3,27 @@ from django.template.defaultfilters import slugify
 from django.contrib.auth.models import User
 from django.urls import reverse
 
+STATUS = ((0, "Draft"),
+          (1, "Publish")
+          )
+
 
 # Create your models here.
 class Post(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(unique=True, max_length=255)
     content = models.TextField()
+    updated_on = models.DateTimeField(auto_now=True)
     created_on = models.DateTimeField(auto_now_add=True)
     author = models.TextField()
+    status = models.IntegerField(choices=STATUS, default=0)
 
 
 def get_absolute_url(self):
     return reverse('blog_post_detail', (),
-            {
-                'slug': self.slug,
-            })
+                   {
+                       'slug': self.slug,
+                   })
 
 
 def save(self, *args, **kwargs):
@@ -27,10 +33,11 @@ def save(self, *args, **kwargs):
 
 
 class Meta:
-    ordering = ['created_on']
+    ordering = ['-created_on']
 
-    def __unicode__(self):
-        return self.title
+
+def __unicode__(self):
+    return self.title
 
 
 class Comment(models.Model):
@@ -40,5 +47,3 @@ class Comment(models.Model):
     content = models.TextField()
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     created_on = models.DateTimeField(auto_now_add=True)
-
-
